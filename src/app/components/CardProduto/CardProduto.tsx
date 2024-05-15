@@ -1,4 +1,5 @@
 import Image from "next/image";
+import useVerificaProdutoFavorito from "../../hooks/useVerificaProdutoFavorito"
 
 interface CardProdutoProps {
   produto: Produto;
@@ -16,7 +17,9 @@ export default function CardProduto({
     setFavoritos((favoritos) => [...favoritos, produto]);
   };
 
-  const ehFavorito = favoritos.some((item) => item.id === produto.id);
+  //const ehFavorito = favoritos.some((item) => item.id === produto.id);
+  const ehFavorito = useVerificaProdutoFavorito(produto.id);
+
 
   return (
     <div className="col">
